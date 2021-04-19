@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{SVM}
+
+\author{osimpson}
+
+\date{2021-04-16}
+
+\begin{document}
+
+\maketitle
+
+\section{Basics}
+
+\begin{theorem}
+    The distance between two parallel hyperplanes, $a^Tx=b_1, a^Tx=b_2$ is 
+    $\frac{|b_1-b_2|}{\norm{a}}$.
+\end{theorem}
+
+\begin{proof}
+    Let $p_1$ be a point on the first plane, and let $p_2$ be the point on the
+    second plane closest to $p_1$.  The distance between $p_1$ and $p_2$ is the
+    distance between the hyperplanes.  This distance is along the normal vector
+    which passes through $p_1$ to $p_2$.  The direction of the normal vector is
+    $a$.  For a quick proof of this, consider two points $x_1, x_2$ on the 
+    hyperplane.  Both points satisfy the equation $a^Tx=b_1$, so we have that 
+    $a^T(x_2-x_1)=0$, and since $x_2-x_1$ defines an arbitrary line on the
+    hyperplane, $a$ is orthogonal to the hyperplane.  Therefore, a vector orthogonal
+    to the hyperplane that goes through $p_1$ to $p_2$ is given by $p_1+a\lambda=p_2$.
+
+    Then $\norm{p_2-p_1} = \norm{p_1+a\lambda - p_1} = |\lambda| \cdot \norm{a}$.
+    We can solve for $\lambda$ using the hyperplane equations:
+    \begin{equation}
+        \begin{split}
+            a^T(p_2-p_1) &= b_2-b_1 \\
+            a^T(a\lambda) &= b_2-b_1 \\
+            \lambda\norm{a}^2 &= b_2-b_1 \\
+            \lambda &= \frac{b_2 - b_1}{\norm{a}^2}
+        \end{split}
+    \end{equation}
+    Thus, $\norm{p_2 - p_1} = \frac{|b_2-b_1|}{\norm{a}}$
+
+\end{proof}
+
+\end{document}
+
+
