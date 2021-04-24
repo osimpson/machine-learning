@@ -24,14 +24,45 @@
 
 \maketitle
 
-\section{Basics}
+\section{Bayesian Statistics}
 
 \begin{theorem} (Bayes)
     \begin{equation}
-        \Prob(A|B) = \frac{\Prob(B|A)P(A)}{\Prob(B)}
+        \Prob(A|B) = \frac{\Prob(B|A)\Prob(A)}{\Prob(B)}
     \end{equation}
 \end{theorem}
 
+\subsection{Parameter Estimation with Bayes Rule}
+
+Let's rewrite Bayes' rule as such:
+\begin{equation}
+    \Prob(\Theta|\text{data}) = \frac{\Prob(\text{data}|\Theta)\Prob(\Theta)}{\Prob(\text{data})},
+\end{equation}
+where $\Theta$ represents parameters of interest, and data are observed samples.
+Our goal is to estimate $\Theta$ given the observed samples.
+
+Let's establish some terminology that statisticians use a lot:
+\begin{itemize}
+    \item $\Prob(\Theta|\text{data})$ is the \emph{posterior distribution}
+    \item $\Prob(\Theta)$ is the \emph{prior distribution} - it represents prior intuition about the parameters without considering the data
+    \item $\Prob(\text{data}|\Theta)$ is the \emph{likelihood}, the distribution of sample outcomes for all possible values of $\Theta$
+\end{itemize}
+
+The denominator $\Prob(\text{data})$ can be thought of as a normalizing constant
+to ensure that the posterior is indeed a distribution.
+
+Now, given this information, Bayes' rule tells us that 
+\begin{equation}
+    \Prob(\Theta|\text{data}) \propto \Prob(\text{data}|\Theta)\Prob(\Theta),
+\end{equation}
+which gives us a way to estimate $\Prob(\Theta|\text{data})$.  Namely, given our
+assumed prior, we can update our probabilities with information from observed data.
+Essentially, we are updating our prior intuitions with information from our sample.
+
+The specifics of how updates work depend on choice of prior, and the form of the
+posterior.  We have some autonomy here as the practitioner.  For example, we may
+choose a prior whose parametric form is retained through to the posterior.  This
+type of prior is called a \emph{conjugate prior}.
 
 \end{document}
 
