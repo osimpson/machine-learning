@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{Linear Regression}
+
+\author{osimpson}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem statement}
+
+We want a model $f$ that is a linear combination of the features:
+\begin{equation}
+    f_{\Theta}(x) = \Theta^T x, \text{where } x_0 := 1
+\end{equation}
+
+\subsection{Problems suited to a linear regression model}
+
+Linear regression seeks to find a model which describes a linear relationship
+between features and points.  Graphically, we are trying to fit a line to our
+training data points.
+
+\section{Objective function}
+
+Mean squared error:
+\begin{equation}
+    \frac{1}{N}\sum_{i} (f_{\Theta}(x_i) - y_i)^2
+\end{equation}
+
+\end{document}
+
